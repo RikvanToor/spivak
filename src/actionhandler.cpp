@@ -97,7 +97,7 @@ void ActionHandler::start()
         m_webserver->start();
     }
 #endif
-
+    
     // When a current song finishes, we want to play the next one automatically
     connect( pEventor, &Eventor::karaokeFinished, this, &ActionHandler::nextQueueItemKaraoke );
 
@@ -379,7 +379,8 @@ void ActionHandler::nextQueueItemKaraoke()
     if ( pSongQueue->next() )
     {
         emit actionMusicPlayerStop();
-        emit actionKaraokePlayerStart();
+        // Commented out to disable automatically playing next track
+        // emit actionKaraokePlayerStart();
     }
     else
     {
