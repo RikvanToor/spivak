@@ -32,7 +32,7 @@ PlayerLyrics::~PlayerLyrics()
 
 bool PlayerLyrics::draw(KaraokePainter &p)
 {
-    qint64 time = qMax( 0, pCurrentState->playerPosition + m_timeDelay );
+    qint64 time = qMax( 0, pCurrentState->playerPosition + pSettings->playerMusicLyricDelay );
 
     if ( !render( p, time ) )
         return false;
