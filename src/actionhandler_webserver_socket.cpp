@@ -232,12 +232,12 @@ void ActionHandler_WebServer_Socket::readyRead()
             res = listDatabase( document );
         else if ( m_url == "/api/queue/remove" )
             res = queueControl( document );
-        else if ( m_url == "/api/control/status" )
-            res = controlStatus( document );
-        else if ( m_url == "/api/control/adjust" )
-            res = controlAdjust( document );
-        else if ( m_url == "/api/control/action" )
-            res = controlAction( document );
+        // else if ( m_url == "/api/control/status" )
+        //     res = controlStatus( document );
+        // else if ( m_url == "/api/control/adjust" )
+        //     res = controlAdjust( document );
+        // else if ( m_url == "/api/control/action" )
+        //     res = controlAction( document );
         else if ( m_url == "/api/collection/info" )
             res = collectionInfo( document );
         else if ( m_url == "/api/auth/status" )
@@ -380,11 +380,11 @@ bool ActionHandler_WebServer_Socket::addsong( QJsonDocument& document )
     {
         QJsonObject obj = document.object();
 
-        if ( !obj.contains( "id" ) || m_loggedName.isEmpty() )
+        if ( !obj.contains( "id" ) || !obj.contains( "singer" ) )
             return false;
 
         int id = obj["id"].toInt();
-        QString singer = m_loggedName;
+        QString singer = obj.value( "singer" ).toString();
 
         Database_SongInfo info;
 

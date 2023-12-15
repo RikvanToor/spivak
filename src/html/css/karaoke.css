@@ -214,7 +214,7 @@ However, delay the fade out process for 2.5 seconds */
 }
 
 
-#confirmdialog {
+#confirmdialog, #enternamedialog {
     display: none;
     position: fixed;
     z-index: 5; /* Sit on top */
@@ -229,7 +229,7 @@ However, delay the fade out process for 2.5 seconds */
 }
 
 
-#confirmdialog-content
+#confirmdialog-content, #enternamedialog-content
 {
     display: block;
     background-color: #fefefe;
@@ -243,7 +243,7 @@ However, delay the fade out process for 2.5 seconds */
     font-size: 1.3em;
 }
 
-#confirmdialog-content button {
+#confirmdialog-content button, #enternamedialog-content button {
     background-color: #ccc;
     display: inline-block;
     border-radius: 10px;
@@ -256,12 +256,12 @@ However, delay the fade out process for 2.5 seconds */
     margin-right: 10px;
 }
 
-#confirmdialog button:hover
+#confirmdialog button:hover, #enternamedialog button:hover
 {
     background-color: #ddd;
 }
 
-#confirmdialogtext
+#confirmdialogtext, #enternamedialogtext
 {
     text-align: left;
     margin-bottom: 8px;

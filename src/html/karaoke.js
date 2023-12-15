@@ -11,6 +11,8 @@ var backToLetter = false;
 // For confirmation dialog
 var confirmDialogCallback = null;
 
+var enterNameDialogCallback = null;
+
 
 
 // https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
@@ -74,6 +76,26 @@ function confirmDialog( text, callback )
 
     document.getElementById( "confirmdialogtext" ).innerHTML = text;
     document.getElementById( "confirmdialog" ).style.display = "block";
+}
+
+function enterNameDialogButton ( value )
+{
+    document.getElementById ("enternamedialog").style.display = "none";
+
+    if ( value ) {
+        var text = document.getElementById("enternamedialoginput").value;
+        enterNameDialogCallback(text);
+    }
+
+    enterNameDialogCallback = null;
+}
+
+function enterNameDialog ( text, callback )
+{
+    enterNameDialogCallback = callback;
+
+    document.getElementById( "enternamedialogtext" ).innerHTML = text;
+    document.getElementById( "enternamedialog" ).style.display = "block";    
 }
 
 
@@ -217,7 +239,11 @@ function addsongSucceed( xhttp )
 
 function addsong( id, title )
 {
-    confirmDialog( "Queue the song \"" + title + "\" ?", function() { runAPI( '/api/addsong', { id : id }, addsongSucceed ); } );
+    enterNameDialog("Enter singer's name:", function(name) {
+        confirmDialog( "Queue the song \"" + title + "\" for " + name + "?", function() {
+            runAPI( '/api/addsong', { id : id, singer: name }, addsongSucceed );
+        } );
+    } );
 }
 
 // Proceeds the authentication status
