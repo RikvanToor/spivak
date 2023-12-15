@@ -139,17 +139,11 @@ int ActionHandler::actionByName(const char *eventname)
 void ActionHandler::enqueueSong(QString singer, int id)
 {
     pSongQueue->addSong( singer, id );
-
-    if ( pCurrentState->playerState == CurrentState::PLAYERSTATE_STOPPED )
-        emit actionKaraokePlayerStart();
 }
 
 void ActionHandler::enqueueSong(QString singer, QString path)
 {
     pSongQueue->addSong( singer, path );
-
-    if ( pCurrentState->playerState == CurrentState::PLAYERSTATE_STOPPED )
-        emit actionKaraokePlayerStart();
 }
 
 void ActionHandler::dequeueSong(int id)
