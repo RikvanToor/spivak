@@ -682,6 +682,11 @@ bool SongDatabaseScanner::guessArtistandTitle( const QString& filePath, const QS
             return false;
 
         title = artist.mid( p + separator.length() );
+        
+        int p2 = filePath.lastIndexOf( ".zip" );
+        if (p2 != -1 )
+            title = title.left(title.length() - 4);
+
         artist = artist.left( p );
     }
     else
