@@ -296,7 +296,7 @@ void Notifications::webServerUrlChanged(QString newurl)
 
 void Notifications::updateWelcomeMessage()
 {
-    m_customMessage = m_webserverURL.isEmpty() ? "Please select a song" : m_webserverURL;
+    m_customMessage = "Please select a song";
 }
 
 void Notifications::reset()
